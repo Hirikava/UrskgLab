@@ -38,7 +38,7 @@ class FileLog(ILog):
         self.file.close()
 
     def write_to_file(self, prefix, value):
-        self.file.write(str.format("{0} {1}\n",prefix, value))
+        self.file.write(str.format("{0} {1}",prefix, value))
 
 class ConsoleLog(ILog):
     def Info(self, value):

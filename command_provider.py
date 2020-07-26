@@ -15,7 +15,7 @@ class FileCommandProvider(ICommandProvider):
             raise exceptions.FailedToInitComponentExceptuion()
 
     def get_command(self):
-        return self.file.readline()
+        return self.file.readline().split(' ')
 
 
 class InterractiveCommandProWvider(ICommandProvider):
