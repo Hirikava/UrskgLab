@@ -20,7 +20,7 @@ class ILog():
 class FileLog(ILog):
     def __init__(self,filename):
         try:
-            self.file = open(filename,'w+')
+            self.file = open(filename,'w')
         except Exception as e:
             print(e.__str__())
             raise FailedToInitComponentExceptuion()
@@ -34,8 +34,11 @@ class FileLog(ILog):
     def Error(self, value):
         self.write_to_file(error_prefix_value, value)
 
+    def __del__(self):
+        self.file.close()
+
     def write_to_file(self, prefix, value):
-        self.file.writelines(str.format("{0} {1}",prefix, value))
+        self.file.write(str.format("{0} {1}\n",prefix, value))
 
 class ConsoleLog(ILog):
     def Info(self, value):

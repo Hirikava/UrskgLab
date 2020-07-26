@@ -1,8 +1,15 @@
-import sys
-import argparse
+import logging
+import command_provider
 
-argument_parser = argparse.ArgumentParser("Process configuration")
-argument_parser.add_argument('--log','-l',metavar='N',default='console', dest="logging")
+from comand_proccessor import command_processor
 
-args = argument_parser.parse_args()
-print(args.logging)
+log = logging.FileLog('prvet_andrey.log')
+commandProvider = command_provider.InterractiveCommandProWvider()
+commandProcessor = command_processor.CommandProcessor(log)
+com = commandProvider.get_command()
+
+while(com[0]):
+    commandProcessor.proccess_command(com[0],com[1:])
+    com = commandProvider.get_command()
+
+log = logging.ConsoleLog()
