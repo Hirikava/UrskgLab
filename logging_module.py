@@ -33,12 +33,10 @@ class FileLog(ILog):
         self.write_to_file(debug_prefix_value, value)
     def Error(self, value):
         self.write_to_file(error_prefix_value, value)
-
-    def __del__(self):
-        self.file.close()
-
     def write_to_file(self, prefix, value):
         self.file.write(str.format("{0} {1}",prefix, value))
+    def __del__(self):
+        self.file.close()
 
 class ConsoleLog(ILog):
     def Info(self, value):
@@ -49,7 +47,6 @@ class ConsoleLog(ILog):
         self.write_to_console(debug_prefix_value, value)
     def Error(self, value):
         self.write_to_console(error_prefix_value, value)
-
     def write_to_console(self, prefix, value):
         print(str.format("{0}:{1}",prefix, value),end='\n')
 

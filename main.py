@@ -1,15 +1,16 @@
-import logging
-import command_provider
+from command_system.command_processor_factory import CommandProcessorFactory
+from command_system.command_provider import FileCommandProvider, InterractiveCommandProvider
+from PIL import Image
+from logging_module import ConsoleLog
 
-from comand_proccessor import command_processor
+t()
+log = ConsoleLog()
+image = Image.new("RGB",(1000,1000),(234,241,123))
+command_processor_factory = CommandProcessorFactory(log,image)
+command_provider = InterractiveCommandProvider()
 
-log = logging.FileLog('prvet_andrey.log')
-commandProvider = command_provider.InterractiveCommandProWvider()
-commandProcessor = command_processor.CommandProcessor(log)
-com = commandProvider.get_command()
-
-while(com[0]):
-    commandProcessor.proccess_command(com[0],com[1:])
-    com = commandProvider.get_command()
-
-log = logging.ConsoleLog()
+com = command_provider.get_command().split()
+while(com):
+    command_processor = command_processor_factory.get_command_processor(com[0])
+    command_processor.process_command(" ".join(com[1:]))
+    com = command_provider.get_command().spli
