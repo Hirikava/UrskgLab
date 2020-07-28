@@ -5,13 +5,10 @@ class ICommandProvider:
         raise NotImplementedError()
 
 class FileCommandProvider(ICommandProvider):
-
-    def __init__(self, file_name, log):
+    def __init__(self, file_name):
         try:
             self.file = open(file_name,'r')
         except IOError:
-            log.error(str.format('failed to open file {0}', file_name))
-            self.file = None
             raise exceptions.FailedToInitComponentExceptuion()
 
     def get_command(self):

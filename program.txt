@@ -1,0 +1,5 @@
+graphics --shape Circle -a 20 20 200 200 -c 255 255 255
+graphics --shape Circle -a 300 300 200 200 -c 255 255 255
+graphics --shape Circle -a 300 0 200 200 -c 255 255 255
+graphics --shape Circle -a 0 300 200 200 -c 255 255 255
+log --Info PrivetAndrey
