@@ -27,11 +27,8 @@ class GraphicsCommandProcessor(ICommandProcessor):
             color = self.create_color(arguments.color)
             if(arguments.shape == "Circle"):
                 image_draw.ellipse(shape,fill=color)
-                self.image.show()
             if (arguments.shape == "Rectangle"):
                 image_draw.rectangle(shape, fill=color)
-                self.image.show()
-
         except ArgumentException as e:
             self.log.Error(e.message)
             return
