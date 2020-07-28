@@ -5,8 +5,6 @@ warn_prefix_value = "[Warn]"
 debug_prefix_value = "[Debug]"
 error_prefix_value = "[Error]"
 
-
-
 class ILog():
     def Info(self, value):
         raise NotImplementedError()
