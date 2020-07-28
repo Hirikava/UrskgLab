@@ -26,7 +26,7 @@ def get_command_provider_cfg(input_argument):
     try:
         return FileCommandProvider(input_argument)
     except FailedToInitComponentExceptuion as e:
-        print("Failed to open file:%0 " % input_argument)
+        print(str.format("Failed to open file:{0}", input_argument))
         raise
 
 

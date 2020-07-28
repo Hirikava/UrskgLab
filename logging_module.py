@@ -32,7 +32,7 @@ class FileLog(ILog):
     def Error(self, value):
         self.write_to_file(error_prefix_value, value)
     def write_to_file(self, prefix, value):
-        self.file.write(str.format("{0} {1}",prefix, value))
+        self.file.write(str.format("{0} {1}\n",prefix, value))
     def __del__(self):
         self.file.close()
 

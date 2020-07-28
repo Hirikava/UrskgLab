@@ -2,6 +2,7 @@ from command_system.comand_proccessors.graphics_command_processor import Graphic
 from command_system.comand_proccessors.log_command_processor import LogCommandProcessor
 from command_system.comand_proccessors.fake_command_processor import FakeCommandProcessor
 from command_system.comand_proccessors.show_command_processor import ShowCommandProcessor
+from command_system.comand_proccessors.save_command_processor import SaveCommandProcessor
 
 class ICommandProcessorFactory():
     def get_command_processor(self, command):
@@ -19,6 +20,8 @@ class CommandProcessorFactory(ICommandProcessorFactory):
             return GraphicsCommandProcessor(self.log, self.image)
         elif (command == "show"):
             return ShowCommandProcessor(self.image)
+        elif (command == "save"):
+            return SaveCommandProcessor(self.image, self.log)
         else:
             self.log.Error(str.format("Unknown command: '{0}'",command))
             return FakeCommandProcessor()
